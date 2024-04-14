@@ -11,15 +11,6 @@ int fact(int n) {
 }
 
 int main() {
-    char name[30];
-    printf("Enter name of the coder of this program: \n");
-    scanf("%s", &name);
-
-    if (strcmp(name, "aashis") != 0) {
-        printf("Invalid owner name. Exiting the program.\n");
-        return 1;
-    }
-
     int n, count = 0, i, j, k;
     double xp, h, s, v = 0, p;
 

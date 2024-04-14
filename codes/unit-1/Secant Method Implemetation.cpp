@@ -41,7 +41,7 @@ int main() {
 
         if (step > n) {
             printf("Not convergent");
-            printf("X2 is root")
+            printf("X2 is root");
             exit(1);
         }
 

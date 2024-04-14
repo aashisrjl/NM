@@ -1,57 +1,61 @@
-#include<stdio.h>
-#define n 3
+// implement Gauss Elimination Method
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+#include <stdlib.h>
+
+#define SIZE 10
 
 int main() {
-    printf("\n\t\t\t\t=========Gauss Elimination Method\n");
-    int i, j, k;
-    float a[n][n], b[n], x[n];
-    float pivot, value, sum;
+    float a[SIZE][SIZE], x[SIZE], ratio;
+    int i, j, k, n;
 
-    printf("\n Enter matrix a \n a11, a12, a13 \n a21, a22, a23 \n a31, a32, a33\n");
-    for(i = 0; i < n; i++) {
-    	printf("\n");
-        for(j = 0; j < n; j++) {
-            scanf("%f \t", &a[i][j]);
+   
+	printf("\t ===GAuss Elimination ====\n");
+    /* Inputs */
+    printf("Enter number of unknowns: ");
+    scanf("%d", &n);
+
+    /* Reading Augmented Matrix */
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n + 1; j++) {
+            printf("a[%d][%d] = ", i, j);
+            scanf("%f", &a[i][j]);
         }
     }
 
-    printf("\n Enter matrix b \n b1, b2, b3 \n");
-    for(i = 0; i < n; i++) {
-        scanf("%f \t", &b[i]);
-    }
-
-    // Gaussian Elimination
-    for(k = 0; k < n-1; k++) {
-        pivot = a[k][k];
-        if(pivot == 0) {
-            printf("Pivot can't be 0 \n");
-            return 1;
+    /* Applying Gauss Elimination */
+    for (i = 1; i <= n - 1; i++) {
+        if (a[i][i] == 0.0) {
+            printf("Mathematical Error!");
+            exit(0);
         }
-        for(i = k+1; i < n; i++) {
-            value = a[i][k] / pivot;
-            for(j = k; j < n; j++) {
-                a[i][j] = a[i][j] - value * a[k][j];
+        for (j = i + 1; j <= n; j++) {
+            ratio = a[j][i] / a[i][i];
+            for (k = 1; k <= n + 1; k++) {
+                a[j][k] = a[j][k] - ratio * a[i][k];
             }
-            b[i] = b[i] - value * b[k];
         }
     }
 
-    // Back Substitution
-    x[n-1] = b[n-1] / a[n-1][n-1];
-    for(i = n-2; i >= 0; i--) {
-        sum = 0;
-        for(j = i+1; j < n; j++) {
-            sum += a[i][j] * x[j];
+    /* Obtaining Solution by Back Substitution */
+    x[n] = a[n][n + 1] / a[n][n];
+    for (i = n - 1; i >= 1; i--) {
+        x[i] = a[i][n + 1];
+        for (j = i + 1; j <= n; j++) {
+            x[i] = x[i] - a[i][j] * x[j];
         }
-        x[i] = (b[i] - sum) / a[i][i];
+        x[i] = x[i] / a[i][i];
     }
 
-    // Output the result
+    /* Displaying Solution */
     printf("\nSolution:\n");
-    for(i = 0; i < n; i++) {
-        printf("x[%d] = %f\n", i+1, x[i]);
+    for (i = 1; i <= n; i++) {
+        printf("x[%d] = %0.3f\n", i, x[i]);
     }
 
+    getch();
     return 0;
 }
+
 

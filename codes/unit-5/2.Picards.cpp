@@ -10,30 +10,55 @@ double picard_iteration(double t0, double y0, double h, double T) {
     int iter = 0;
 
     while (iter < MAX_ITER) {
-        y = y0;  // Initialize y for each iteration
+        y = y0; // Initialize y for the iteration
         for (double t = t0; t < T; t += h) {
-            // Define the function dy/dt = t^2 + y directly inside the loop
+            // The function dy/dt = t^2 + y, directly used in the calculation
             double derivative = t * t + y;
-            y = y0 + h * derivative;
-            y0 = y;
+            y += h * derivative; // Increment y based on the derivative
         }
 
         // Check for convergence
-        if (fabs(y - y_prev) < EPSILON)
+        if (fabs(y - y_prev) < EPSILON) {
             break;
+        }
 
         y_prev = y;
         iter++;
+    }
+
+    // Check if iteration stopped due to reaching the maximum number of iterations
+    if (iter == MAX_ITER) {
+        printf("Warning: Maximum iterations reached. Solution may not have converged.\n");
     }
 
     return y;
 }
 
 int main() {
-    double t0 = 0.0;    // Initial value of t
-    double y0 = 1.0;    // Initial value of y
-    double h = 0.1;     // Step size
-    double T = 1.0;     // Final value of t
+    printf("Picard Iteration Method for ODE solving\n");
+
+    double t0, y0, h, T;
+
+    // User input for initial conditions and parameters
+    printf("Enter initial value of t (t0): ");
+    scanf("%lf", &t0);
+
+    printf("Enter initial value of y (y0): ");
+    scanf("%lf", &y0);
+
+    printf("Enter step size (h): ");
+    scanf("%lf", &h);
+    if (h <= 0) {
+        printf("Error: Step size must be positive.\n");
+        return 1;
+    }
+
+    printf("Enter final value of t (T): ");
+    scanf("%lf", &T);
+    if (T <= t0) {
+        printf("Error: Final time T must be greater than initial time t0.\n");
+        return 1;
+    }
 
     double result = picard_iteration(t0, y0, h, T);
 

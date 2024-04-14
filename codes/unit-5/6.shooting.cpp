@@ -9,7 +9,7 @@ double f(double x, double y, double z) {
 }
 
 double g(double x, double y, double z) {
-    return x + y;  // dz/dx = x + y
+    return 6*x;  // dz/dx = x + y
 }
 
 // Euler's method for solving ODEs
@@ -37,6 +37,7 @@ double shoot(double x0, double y0, double zlow, double zhigh, double xn, double 
 }
 
 int main() {
+	printf("\t === ODE using Shouting method ===\n");
     double x0, y0, xn, yd;
 
     // Input initial conditions, boundary conditions, and desired boundary value

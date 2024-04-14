@@ -9,7 +9,7 @@ int main() {
     int maxIterations = 100; 
     int iterations = 0;
     int i, j;
-
+	printf("\t ===JACOBIAN ITERATION==\n");
     // Input matrix A and vector B
     printf("Enter the coefficients of the matrix A and the vector B:\n");
     for (i = 0; i < N; i++) {

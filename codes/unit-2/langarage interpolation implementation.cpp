@@ -5,6 +5,7 @@ int main() {
     float x[100], y[100], xp, yp = 0, p;
     int i, j, n;
     
+    printf("====Langarange Interpolation:\n");
     printf("Enter number of data: ");
     scanf("%d", &n);
     

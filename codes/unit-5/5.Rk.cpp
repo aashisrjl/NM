@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
-#define f(x,y) 2.0*y/x
+#define f(x,y) 2.0*x +y
 int main()
 {
+	printf("\t===RK===\n");
   int i,n;
   float x,y,xp,h;
   float m1,m2,m3,m4;

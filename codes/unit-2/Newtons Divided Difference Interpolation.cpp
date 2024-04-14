@@ -2,6 +2,7 @@
 #include<conio.h>
 int main(){
 	int n,i,j;
+	printf("Newton divided difference interpolation:\n");
 	float v=0,p,xv,x[10],fx[10],a[10];
 	printf("Enter the number of points: \n");
 	scanf("%d",&n);
@@ -30,6 +31,7 @@ int main(){
 			}
 		}
 		printf("Interpolation value = %f",v);
+		
 		getch();
 		
 		return 0;

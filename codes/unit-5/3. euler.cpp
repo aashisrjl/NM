@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <conio.h>
 #include <math.h>
-#define f(x,y) 2*y/x
+#define f(x,y) 2*x+y
 int main()
 {
-  
+  printf("\t ==EULER==\n");
   int i,n;
   float x,y,h,xp,dy;
   printf("Input initial value of x and y");

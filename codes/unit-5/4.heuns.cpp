@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<conio.h>
-#define f(x,y) 2*y/x
+#define f(x,y) 2*x +y
 
 int main()
 {
+	printf("\t ==HEUN'S==\n");
 		int i,n;
 	float x,y,h,xp,m1,m2;
 	printf("\nInput initialvalue of x and y;\n");

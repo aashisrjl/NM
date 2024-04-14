@@ -3,15 +3,22 @@
 
 // Function to perform Cholesky decomposition
 void choleskyDecomposition(double A[][10], double L[][10], int n) {
+    // Initialize L to zero
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            L[i][j] = 0;
+        }
+    }
+
     for (int i = 0; i < n; i++) {
         for (int j = 0; j <= i; j++) {
             double sum = 0;
 
-            if (j == i) {
+            if (j == i) { // Diagonal elements
                 for (int k = 0; k < j; k++)
                     sum += pow(L[j][k], 2);
                 L[j][j] = sqrt(A[j][j] - sum);
-            } else {
+            } else { // Off-diagonal elements
                 for (int k = 0; k < j; k++)
                     sum += (L[i][k] * L[j][k]);
                 L[i][j] = (A[i][j] - sum) / L[j][j];
@@ -19,7 +26,6 @@ void choleskyDecomposition(double A[][10], double L[][10], int n) {
         }
     }
 }
-
 
 // Function to print a matrix
 void printMatrix(double mat[][10], int n) {
@@ -31,14 +37,14 @@ void printMatrix(double mat[][10], int n) {
 }
 
 int main() {
-	printf("\t\t\t\t =======Cholesky Decomposition method=====\n");
+    printf("\t\t\t\t =======Cholesky Decomposition method=====\n");
     int n;
 
     // Input size of the matrix
     printf("Enter the size of the matrix: ");
     scanf("%d", &n);
 
-    double A[10][10], L[10][10];
+    double A[10][10], L[10][10] = {0}; // Initialize L to zeros
 
     // Input elements of the matrix
     printf("Enter the elements of the matrix:\n");
@@ -52,6 +58,7 @@ int main() {
 
     // Display the lower triangular matrix
     printf("\nLower Triangular Matrix (L):\n");
+    printf("Upper metrix(U) is the transpose metrix of lower matrix\n");
     printMatrix(L, n);
 
     return 0;

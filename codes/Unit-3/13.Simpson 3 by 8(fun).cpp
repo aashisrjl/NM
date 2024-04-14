@@ -8,8 +8,7 @@
 
 int main()
 {
-    printf("\n\n \t\t  Simpson 3/8(fun)\n");
-    printf("\t\t ====================================\n");
+    printf("\n \t\t === Simpson 3/8(fun)====\n");
 	float a,b,h,value;
 
 	printf("\n Enter the initial value of x:");

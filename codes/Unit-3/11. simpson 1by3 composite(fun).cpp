@@ -4,8 +4,8 @@
 #define F(x) (1 - exp(-(x) / 2.0))
 
 int main() {
-	    printf("\n\n \t\t Composite Simpson 1/3(fun)\n");
-    printf("\t\t ====================================\n");
+	    printf("\n \t\t==== Composite Simpson 1/3(fun)=====\n");
+
     int n;
     float a, b, h, sum = 0.0, Ics;
     

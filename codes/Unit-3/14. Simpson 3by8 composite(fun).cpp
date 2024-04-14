@@ -5,10 +5,8 @@
 int main() {
     float a, b, h, value = 0.0;
     int n;
-    printf("\n\n \t\t Composite Simpson 3/8 function\n");
-    printf("\t\t ====================================\n");
-
-    printf("\nEnter the initial value of x: ");
+    printf("\n \t\t=== Composite Simpson 3/8 function=====\n");
+     printf("\nEnter the initial value of x: ");
     scanf("%f", &a);
     printf("\nEnter the final value of x: ");
     scanf("%f", &b);

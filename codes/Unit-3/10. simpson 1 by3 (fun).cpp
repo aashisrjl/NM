@@ -5,9 +5,7 @@
 #define F(x) 1-exp(-(x)/2.0)
 int main()
 {
-	    printf("\n\n \t\t  Simpson 1/3(fun)\n");
-    printf("\t\t ====================================\n");
-
+	    printf("\t\t === Simpson 1/3(fun)==\n");
    int n,m,i;
    float a,b,h,sum,Ics,x,f1,f2,f3;
    printf("Enter initial value of X:");

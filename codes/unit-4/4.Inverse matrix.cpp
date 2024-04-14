@@ -1,59 +1,74 @@
 #include <stdio.h>
+#include <conio.h>
+#include <math.h>
 
-#define n 3
+#define SIZE 10
 
 int main() {
-    printf("\t\t\t\ ====Gauss Jordan Method for Matrix Inversion ==========\n");
-    float a[n][2 * n], x[n], ratio;
+    float a[SIZE][SIZE], ratio;
+    int i, j, k, n;
 
-    // Input the matrix
-    printf("Enter the coefficients of the matrix:\n");
-    for (int i = 0; i < n; i++) {
-        printf("Row %d: ", i + 1);
-        for (int j = 0; j < n; j++) {
+    printf("\t\t\t\ ====Gauss Jordan Method for Matrix Inversion ==========\n");
+
+
+    /* Inputs */
+    printf("Enter order of matrix: ");
+    scanf("%d", &n);
+
+    /* Reading Matrix */
+    printf("Enter coefficients of Matrix:\n");
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            printf("a[%d][%d] = ", i, j);
             scanf("%f", &a[i][j]);
         }
     }
 
-    // Augmenting the matrix with an identity matrix
-    for (int i = 0; i < n; i++) {
-        for (int j = n; j < 2 * n; j++) {
-            a[i][j] = (i == (j - n)) ? 1 : 0;
+    /* Augmenting Identity Matrix of Order n */
+    for (i = 1; i <= n; i++) {
+        for (j = 1; j <= n; j++) {
+            if (i == j) {
+                a[i][j + n] = 1;
+            } else {
+                a[i][j + n] = 0;
+            }
         }
     }
 
-    // Applying Gauss-Jordan elimination
-    for (int i = 0; i < n; i++) {
+    /* Applying Gauss Jordan Elimination */
+    for (i = 1; i <= n; i++) {
         if (a[i][i] == 0.0) {
-            printf("Mathematical Error!\n");
-            return 1;
+            printf("Mathematical Error!");
+           
         }
-        for (int j = 0; j < n; j++) {
+        for (j = 1; j <= n; j++) {
             if (i != j) {
                 ratio = a[j][i] / a[i][i];
-                for (int k = 0; k < 2 * n; k++) {
+                for (k = 1; k <= 2 * n; k++) {
                     a[j][k] = a[j][k] - ratio * a[i][k];
                 }
             }
         }
     }
 
-    // Extracting the inverted matrix
-    for (int i = 0; i < n; i++) {
-        for (int j = n; j < 2 * n; j++) {
+    /* Row Operation to Make Principal Diagonal to 1 */
+    for (i = 1; i <= n; i++) {
+        for (j = n + 1; j <= 2 * n; j++) {
             a[i][j] = a[i][j] / a[i][i];
         }
     }
 
-    // Displaying the inverted matrix
-    printf("\nInverted Matrix:\n");
-    for (int i = 0; i < n; i++) {
-        for (int j = n; j < 2 * n; j++) {
-            printf("%.3f\t", a[i][j]);
+    /* Displaying Inverse Matrix */
+    printf("\nInverse Matrix is:\n");
+    for (i = 1; i <= n; i++) {
+        for (j = n + 1; j <= 2 * n; j++) {
+            printf("%0.3f\t", a[i][j]);
         }
         printf("\n");
     }
 
+    getch();
     return 0;
 }
+
 

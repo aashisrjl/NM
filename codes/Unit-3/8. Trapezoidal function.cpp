@@ -4,10 +4,9 @@
 #define f(x) x*x*x+1
 int main()
 {
-	    printf("\n\n \t\t  Trapezoidal\n");
-    printf("\t\t ====================================\n");
+
 float a,b,it,h;
-printf("\n \t\t Trapezoidal\n");
+printf("\n \t====Trapezoidal===\n");
 printf("Please enter the limits of integration\n");
 scanf("%f%f",&a,&b);
 h=b-a;
